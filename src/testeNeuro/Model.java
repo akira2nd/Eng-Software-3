@@ -25,7 +25,7 @@ public class Model {
 	}
 	
 	public void registerObserver(Observer o) {
-		observers.add(o);
+		this.observers.add(o);
 	}
 	
 	public void removeObserver(Observer o) {
@@ -38,7 +38,7 @@ public class Model {
 	public void notifyObservers() {
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = (Observer)observers.get(i);
-			observer.update(aluno);//4 polimorfismo
+			observer.update(this.aluno);//4 polimorfismo
 		}
 	}
 	

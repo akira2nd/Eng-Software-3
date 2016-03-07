@@ -16,12 +16,17 @@ public class View implements ActionListener, Observer {
 	JFrame frame;
 	
 	JPanel panelBotoes;
-	JPanel panelPontos;
 	JPanel panelNome;
+	JPanel panelPontos;
+	JPanel panelPontuacaoFinal;
 	JPanel panelDados;
 	
-	JLabel labelPontos;
 	JLabel labelNome;
+	JLabel labelPontos;
+	JLabel labelPontuacaoFinal;
+	JLabel textNome;
+	JLabel textPontos;
+	JLabel textPontuacaoFinal;
 	
 	JButton voltar;
 	JButton proximo;
@@ -39,12 +44,17 @@ public class View implements ActionListener, Observer {
 		panelDados = new JPanel();
 		panelNome = new JPanel();
 		panelPontos = new JPanel();
+		panelPontuacaoFinal = new JPanel();
 		
 		voltar = new JButton("Voltar Aluno");
 		proximo = new JButton("Proximo Aluno");
 		
 		labelNome = new JLabel();
 		labelPontos = new JLabel();
+		labelPontuacaoFinal = new JLabel();
+		textNome = new JLabel("Nome: ");
+		textPontos = new JLabel("Pontuação: ");
+		textPontuacaoFinal = new JLabel("Pontuação final: ");
 		
 		
 		voltar.addActionListener(this);
@@ -52,35 +62,44 @@ public class View implements ActionListener, Observer {
 		
 		panelBotoes.add(voltar);
 		panelBotoes.add(proximo);
-		
+
+		panelNome.add(textNome);
 		panelNome.add(labelNome);
+		panelPontos.add(textPontos);
 		panelPontos.add(labelPontos);
+		panelPontuacaoFinal.add(textPontuacaoFinal);
+		panelPontuacaoFinal.add(labelPontuacaoFinal);
 		
 
 		panelDados.add(panelNome);
 		panelDados.add(panelPontos);
+		panelDados.add(panelPontuacaoFinal);
 		
 		frame.getContentPane().add(BorderLayout.SOUTH, panelBotoes);
 		frame.getContentPane().add(BorderLayout.CENTER, panelDados);
 		
 		labelNome.setText(aluno.getNome());
 		labelPontos.setText(aluno.getPontosTestes().toString());
+		labelPontuacaoFinal.setText(aluno.getTotal().toString());
+		
+		desabilitarBotaoVoltar();
 		
 		
-		frame.setSize(300, 150);
+		frame.setSize(300, 200);
 		frame.setVisible(true);
 		
 	}
 
 	public void update(Pessoa aluno) {
         this.aluno = aluno;
-        
+        System.out.println("view: " + this.aluno.getNome());
 		display();
 	}
 
 	public void display() {
 		labelNome.setText(aluno.getNome());
 		labelPontos.setText(aluno.getPontosTestes().toString());
+		labelPontuacaoFinal.setText(aluno.getTotal().toString());
 		
 	}
 	
