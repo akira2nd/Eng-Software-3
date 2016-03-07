@@ -14,10 +14,48 @@ import org.json.JSONObject;
 
 public class Model {
 	private Connection con = new Connection();
+	private ArrayList observers;
 	private List<Pessoa> pessoas;
 	private List<Ponto> pontos;
+	private Pessoa aluno;
 	
 	
+	public Model(){
+		observers = new ArrayList();
+	}
+	
+	public void registerObserver(Observer o) {
+		observers.add(o);
+	}
+	
+	public void removeObserver(Observer o) {
+		int i = observers.indexOf(o);
+		if (i >= 0) {
+			observers.remove(i);
+		}
+	}
+	
+	public void notifyObservers() {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer)observers.get(i);
+			observer.update(aluno);//4 polimorfismo
+		}
+	}
+	
+	
+	public void setMeasurements(Pessoa aluno) {
+		this.aluno = aluno;
+		notifyObservers();
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param aluno
+	 * @return Pontuação final (Integer)
+	 * @throws JSONException
+	 */
 	public Integer getPontos(Pessoa aluno) throws JSONException{
 		Integer pontuacaoFinal = 0;
 		List<Ponto> tabelaPontos = this.pontos;

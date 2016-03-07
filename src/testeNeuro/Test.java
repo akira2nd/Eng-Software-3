@@ -2,6 +2,8 @@ package testeNeuro;
 
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONException;
 
@@ -17,12 +19,19 @@ public class Test {
 		List<Pessoa> pessoas = model.getBDPessoas();
 		
 		
-		for(Pessoa p : pessoas){
+		Controller controller = new Controller(model);
+		
+		
+
+        model.setMeasurements(pessoas.get(0));
+		 
+	      
+		/*for(Pessoa p : pessoas){
 			System.out.println("Nome: " + p.getNome());
 			System.out.println("Idade: " + p.getIdade());
 			System.out.println("Pontos dos testes: " + p.getPontosTestes());
 			System.out.println("Pontuação final: " + model.getPontos(p) + "\n");
-		}
+		}*/
 		
 	}
 	
