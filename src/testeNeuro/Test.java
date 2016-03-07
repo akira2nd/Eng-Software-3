@@ -12,7 +12,7 @@ public class Test {
 
 	public static void main(String[] args) throws JSONException {
 		
-		Model model = new Model();
+		final Model model = new Model();
 		model.setPessoas("https://api.myjson.com/bins/1mukr");
 		model.setPontos("https://api.myjson.com/bins/32fj1");
 
@@ -23,7 +23,6 @@ public class Test {
 		
 		
 
-        model.setMeasurements(pessoas.get(0));
 		 
 	      
 		/*for(Pessoa p : pessoas){

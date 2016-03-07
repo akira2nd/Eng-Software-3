@@ -49,7 +49,6 @@ public class Model {
 	}
 	
 	
-	
 	/**
 	 * 
 	 * @param aluno

@@ -10,10 +10,8 @@ import javax.swing.*;
 import java.util.List;
 
 public class View implements ActionListener, Observer {
-	private Model model;
 	private AcessoController controller; //polimorfismo
 	private Pessoa aluno;
-	private List<Pessoa> alunos;
 	
 	JFrame frame;
 	
@@ -28,11 +26,9 @@ public class View implements ActionListener, Observer {
 	JButton voltar;
 	JButton proximo;
 	
-	public View(Model mo, AcessoController co) {
-		this.model = mo;
-		this.controller = co;
-		this.alunos = mo.getBDPessoas();
-		this.aluno = alunos.get(0);
+	public View(Pessoa aluno, AcessoController controller) {
+		this.aluno = aluno;
+		this.controller = controller;
 	}
 	
 	
@@ -83,7 +79,6 @@ public class View implements ActionListener, Observer {
 	}
 
 	public void display() {
-		
 		labelNome.setText(aluno.getNome());
 		labelPontos.setText(aluno.getPontosTestes().toString());
 		
